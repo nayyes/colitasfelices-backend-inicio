@@ -55,11 +55,15 @@ public class AuthController {
         userEntity.setEmail(user.getEmail());
         
         var result = userService.findByEmail(userEntity.getEmail());
+        if(result == null)
+            return new ResponseEntity<>(new ErrorMessage("500", "Usuario o contraseñas incorrectas."),
+                    HttpStatus.NOT_FOUND);
+        
         boolean matches = passwordEncoder.matches(user.getPassword(), result.getPassword());
         if(matches)
             return new ResponseEntity<>(result,HttpStatus.OK);
         else
             return new ResponseEntity<>(new ErrorMessage("500", "Usuario o contraseñas incorrectas."),
-                    HttpStatus.NOT_FOUND);    
+                    HttpStatus.NOT_FOUND);
     }  
 }
