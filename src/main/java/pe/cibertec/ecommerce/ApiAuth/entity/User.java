@@ -20,8 +20,8 @@ public class User {
     @GeneratedValue(strategy 
             = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String username;
+    private String nombre;
+    /*private String username;*/
     private String email;
     private String password;
     @ManyToMany
@@ -33,5 +33,14 @@ public class User {
             @JoinColumn(name="role_id",
              referencedColumnName = "id"))
     private Set<Role> roles;
-    
+    private String sexo;
+    private String fechaNacimiento;
+    private Integer cantidadMascota;
+    private String apellidoPaterno;
+    private String apellidoMaterno;
+    private String telefono;
+    private String distrito;
+    private String provincia;
+    private String departamento;
+    private String pais;
 }

@@ -34,11 +34,21 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@RequestBody SignUpDto user){
         User userEntity = new User();
-        userEntity.setName(user.getName());
-        userEntity.setUsername(user.getUsername());
+        userEntity.setNombre(user.getNombre());
         userEntity.setEmail(user.getEmail());
         userEntity.setPassword(passwordEncoder.encode(user.getPassword()));
         userEntity.setRoles(user.getRoles());
+        userEntity.setSexo(user.getSexo());
+        userEntity.setRoles(user.getRoles());
+        userEntity.setFechaNacimiento(user.getFechaNacimiento());
+        userEntity.setCantidadMascota(user.getCantidadMascota());
+        userEntity.setApellidoPaterno(user.getApellidoPaterno());
+        userEntity.setApellidoMaterno(user.getApellidoMaterno());
+        userEntity.setTelefono(user.getTelefono());
+        userEntity.setDistrito(user.getDistrito());
+        userEntity.setProvincia(user.getProvincia());
+        userEntity.setDepartamento(user.getDepartamento());
+        userEntity.setPais(user.getPais());
         
         var existEmail = userService.findByEmail(user.getEmail());
         if(existEmail != null)
